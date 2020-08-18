@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import TrainSingle from '../TrainSingle'
 
-interface Props {
-  expectedArrival?: string;
-  status: string;
-  destination: string;
-}
-
-function TimeUntil(): JSX.Element {
+function RenderTrains(): JSX.Element {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasWorked, setHasWorked] = useState(false);
@@ -43,42 +38,16 @@ function TimeUntil(): JSX.Element {
       console.log('itemsAll', itemsAll)
       const result = items.all.filter(item => item.destination_name = "London Euston");
       console.log('result:', result);
-      let first = result[0]
-      console.log('first', first)
 
-      // Arrival Time
-
-      const arrivalTime = first.aimed_arrival_time
-      const arrivalTimeNum = arrivalTime.split(':')
-      console.log('arrivalTime', arrivalTime, 'arrivalTimeNum', arrivalTimeNum)
-      const arrivalTimeNumH = arrivalTimeNum[0]
-      const arrivalTimeNumM = arrivalTimeNum[1]
-      const arrivalH = Number(arrivalTimeNumH)
-      const arrivalM = Number(arrivalTimeNumM)
-      console.log('arrivalH', arrivalH, 'arrivalM', arrivalM)
-
-
-      // Current Time
-      var d = new Date();
-      var t = d.getTime();
-      var h = d.getHours()
-      var m = d.getMinutes()
-      console.log('h', h, 'm', m)
-      // const currentTime = []
-      // const currentTimeArray = currentTime.push(h, m)
-      // console.log('currentTimeArray', currentTimeArray)
-      let timeUntilTrain
-      if (arrivalH != h) {
-        const minutesUntilHourChange = 60 - m
-        const totalTimeUntilTrain = minutesUntilHourChange +  arrivalM
-        // console.log('totalTimeUntilTrain', totalTimeUntilTrain)
-        timeUntilTrain = totalTimeUntilTrain
-        // return timeUntilTrain
-      }
-
-      console.log('timeUntilTrain', timeUntilTrain)
       return (
-        <div><h1>{`${timeUntilTrain} minutes until the next train`}</h1></div>
+        <ul>
+        {result.map(item => {
+          return (
+            <TrainSingle expectedArrival={item.expected_arrival_time} status={item.status} destination={item.destination_name} />
+          )
+        }
+        )}
+        </ul>
       );
     } else {
       return (
@@ -87,4 +56,4 @@ function TimeUntil(): JSX.Element {
     }
 }
 
-export default TimeUntil;
+export default RenderTrains;

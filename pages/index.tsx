@@ -1,9 +1,13 @@
-import Hero from "../components/Hero";
+import TimeUntil from '../components/TimeUntil'
+import RenderTrains from '../components/RenderTrains'
 
 function Home(): JSX.Element {
   return (
     <div className="container">
-      <Hero title="Verlay app" subtitle="build your next banger" />
+      <>
+      <TimeUntil />
+      <RenderTrains />
+      </>
     </div>
   );
 }
