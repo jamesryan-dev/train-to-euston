@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import TrainSingle from '../TrainSingle'
 
 interface Props {
-  all: any[];
+  all: any;
 }
 
-function RenderTrains(props: Props): JSX.Element {
+function RenderTrains({ all }: Props): JSX.Element {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasWorked, setHasWorked] = useState(false);
