@@ -77,6 +77,17 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
       return eustonArrivalTime
     }
   }
+
+  const getPlatform = (timetable) => {
+    if (timetable != undefined) {
+      // console.log('timetable in func != undefined:', timetable)
+      const euston = timetable.find(stop => stop.station_code == 'EUS')
+      // const euston = timetable.slice(-1)[0]
+      // console.log('euston', euston)
+      const eustonPlatform= euston.platform
+      return eustonPlatform
+    }
+  }
   return (
     <TrainSingleComp>
       <div className='timeStatus'>
@@ -86,7 +97,7 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
             <p className='arrival'>{expectedArrival}</p>
           </InfoContainer>
           <InfoContainer className='infoContainer'>
-            <p className='small-p'>Euston</p>
+            <p className='small-p'>Euston ({getPlatform(timetable)})</p>
             <p className='arrival'>{getEuston(timetable)}</p>
           </InfoContainer>
 
