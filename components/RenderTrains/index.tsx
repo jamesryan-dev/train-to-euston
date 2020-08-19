@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import TrainSingle from '../TrainSingle'
 
 interface Props {
-  all: Array<Object>;
-  itemsAll: Array<Object>;
+  all: Array<String>;
+  itemsAll: Array<String>;
 }
 
 
