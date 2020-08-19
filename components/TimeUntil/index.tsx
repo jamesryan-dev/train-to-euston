@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {TimeUntilComp} from './styled'
 
 interface Props {
   expectedArrival?: string;
@@ -46,7 +47,7 @@ const workOutTime = (data, i) => {
     console.log('timeUntilTrain in func:', timeUntilTrain)
     // setTimeUntilArrival(timeUntilTrain)
     return (
-      <div><h1>{`${timeUntilTrain} minutes until the next train to London Euston`}</h1></div>
+    <TimeUntilComp><h2>{`${timeUntilTrain} minutes until the next train to London Euston`}</h2></TimeUntilComp>
     );
     // return timeUntilTrain
   } else if (arrivalH == h && arrivalM == m){
@@ -54,17 +55,17 @@ const workOutTime = (data, i) => {
     // this.state.setHasArrived(true)
     setTimeout(() => workOutTime(data, 1), 3000)
     return (
-      <div><h1>{`The train is at the platform`}</h1></div>
+    <TimeUntilComp><h2>{`The train is at the platform`}</h2></TimeUntilComp>
     );
   } else if (arrivalH == h && m > arrivalM) {
     console.log('train has gone!')
     setTimeout(() => workOutTime(data, 1), 3000)
     return (
-      <div><h1>{`You just missed it, refresh to see when the next one is`}</h1></div>
+    <TimeUntilComp><h2>{`You just missed it, refresh to see when the next one is`}</h2></TimeUntilComp>
     );
   } else if (arrivalH == h && (arrivalM - m == 1)) {
     return (
-      <div><h1>{`1 minute until the next train arrives`}</h1></div>
+    <TimeUntilComp><h2>{`1 minute until the next train arrives`}</h2></TimeUntilComp>
     );
   } else {
     console.log('same hour')
@@ -72,7 +73,7 @@ const workOutTime = (data, i) => {
     console.log('minutes Left:', minutesLeft)
     timeUntilTrain = minutesLeft
     return (
-      <div><h1>{`${timeUntilTrain} minutes until the next train`}</h1></div>
+    <TimeUntilComp><h2>{`${timeUntilTrain} minutes until the next train`}</h2></TimeUntilComp>
     );
   }
   console.log('timeUntilTrain:', timeUntilTrain)

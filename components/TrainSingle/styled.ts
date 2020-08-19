@@ -1,31 +1,71 @@
 import styled from 'styled-components'
 
 export const Status = styled.div`
-    padding: 10px;
-
+    padding: 5px 8px;
+    border-radius: 20px;
+    display: inline-flex;
+    min-width: 55px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 1rem;
+    background: #004c45;
     ${({ early }) => (early ? Early(early) : null)};
     ${({ onTime }) => (onTime ? OnTime(onTime) : null)};
     ${({ late }) => (late ? Late(late) : null)};
+    ${({changeOfOrigin}) => (changeOfOrigin ? ChangeOfOrigin(changeOfOrigin) : null)};
 `
 
 const Early = () => {
   return `
-    background: green;
+    // background: #00b066;
+    color: #00b066;
+    color: #d7d7d7;
   `
 }
 
 const OnTime = () => {
   return `
-    background: yellow;
+    color: #fcb409;
+    // backgrund: #004c45;
+    color: #00b066;
   `
 }
 
 const Late = () => {
   return `
-    background: red;
+    color: #f26175;
+  `
+}
+
+const ChangeOfOrigin = () => {
+  return `
+    color: #fcb409;
   `
 }
 
 export const TrainSingleComp = styled.div`
   margin-bottom: 2rem;
+  background-color: #3a7b75;
+  border-radius: 6px;
+  color: white;
+  padding: 10px 6px;
+  box-shadow: 0 5px 10px rgba(11,31,29, 0.19), 0 3px 3px rgba(11,31,29, 0.23);
+  .timeDesination {
+    display: flex;
+    flex-direction: column;
+    .arrival {
+      font-size: 1.6rem;
+      padding-bottom: 4px;
+    }
+    .destination {
+      opacity: 0.7;
+    }
+  }
+  .timeStatus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
 `

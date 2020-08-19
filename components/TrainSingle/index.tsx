@@ -25,20 +25,22 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
       return (
         <Status late>Late</Status>
       )
+    } else if (status == 'CHANGE OF ORIGIN') {
+      return (
+        <Status changeOfOrigin>Change of origin</Status>
+      )
     }
   }
 
   return (
     <TrainSingleComp>
-    <div>
-      {expectedArrival}
-    </div>
-    <div>
+      <div className='timeStatus'>
+        <div className='timeDesination'>
+          <p className='arrival'>{expectedArrival}</p>
+          <p className='destination'>{destination}</p>
+        </div>
       {renderStatus(status)}
-    </div>
-    <div>
-    {destination}
-    </div>
+      </div>
     </TrainSingleComp>
   );
 };
