@@ -53,7 +53,10 @@ export const TrainSingleComp = styled.div`
   box-shadow: 0 5px 10px rgba(11,31,29, 0.19), 0 3px 3px rgba(11,31,29, 0.23);
   .timeDesination {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
     .arrival {
       font-size: 1.6rem;
       padding-bottom: 4px;

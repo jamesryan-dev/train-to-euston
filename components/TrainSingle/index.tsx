@@ -11,6 +11,11 @@ interface Props {
 }
 
 const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onTime, early, late, service_timetable}): JSX.Element => {
+  const [timetables, setTimetables] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hasWorked, setHasWorked] = useState(false);
+  const [hasError, setHasError] = useState(false)
 
   const renderStatus = (status) => {
     if (status == 'ON TIME') {
@@ -46,14 +51,32 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
         .then(res => res.json())
         .then(
           (result) => {
-            console.log('timetable result:', result )
+            setIsLoaded(true);
+            setHasWorked(true);
+            setTimetables(result)
+            console.log('TrainSingle >> ', 'isLoaded:', isLoaded, 'hasWorked:', hasWorked, 'timetable result:', result )
+            return result
           },
           (error) => {
-            console.log('error', error)
+            setIsLoaded(true);
+            setError(error);
+            console.log('TrainSingle >> ', 'isLoaded:', isLoaded, 'error', error)
           }
         )
     }, [])
+  let timetable = timetables.stops
+  console.log('stops:', timetable)
 
+  const getEuston = (timetable) => {
+    if (timetable != undefined) {
+      // console.log('timetable in func != undefined:', timetable)
+      const euston = timetable.find(stop => stop.station_code == 'EUS')
+      // const euston = timetable.slice(-1)[0]
+      // console.log('euston', euston)
+      const eustonArrivalTime = euston.expected_arrival_time
+      return eustonArrivalTime
+    }
+  }
   return (
     <TrainSingleComp>
       <div className='timeStatus'>
@@ -62,12 +85,24 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
             <p className='small-p'>Berkhamsted</p>
             <p className='arrival'>{expectedArrival}</p>
           </InfoContainer>
+          <InfoContainer className='infoContainer'>
+            <p className='small-p'>Euston</p>
+            <p className='arrival'>{getEuston(timetable)}</p>
+          </InfoContainer>
+
         </div>
       {renderStatus(status)}
-      {renderEustonArrival()}
+
       </div>
     </TrainSingleComp>
   );
 };
 
 export default TrainSingle;
+
+// {timetable.map(item => {
+//   return (
+//     <div>timetable</div>
+//   )
+// }
+// )}

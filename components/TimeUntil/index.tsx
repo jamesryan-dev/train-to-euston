@@ -8,32 +8,32 @@ interface Props {
 }
 
 const workOutTime = (data, i) => {
-  console.log('items wasnt undefined', data)
+  // console.log('items wasnt undefined', data)
   // console.log('items.all', data.all)
   let itemsAll = data
-  console.log('itemsAll', itemsAll)
+  // console.log('itemsAll', itemsAll)
   // const result = data.filter(item => item.destination_name = "London Euston");
   // console.log('result:', result);
   const resultEuston = itemsAll.filter(item => item.destination_name == "London Euston");
-  console.log('result Euston', resultEuston)
+  // console.log('result Euston', resultEuston)
   // const result = resultEuston.filter(item => item.origin_name == "Milton Keynes Central");
 
   const result = resultEuston.filter(function(result) {
    return result.origin_name === "Milton Keynes Central" || result.origin_name === "Northampton" || result.origin_name === "Tring";
    });
   let first = result[i]
-  console.log('first', first)
+  // console.log('first', first)
 
   // Arrival Time
 
   const arrivalTime = first.expected_arrival_time
   const arrivalTimeNum = arrivalTime.split(':')
-  console.log('arrivalTime', arrivalTime, 'arrivalTimeNum', arrivalTimeNum)
+  // console.log('arrivalTime', arrivalTime, 'arrivalTimeNum', arrivalTimeNum)
   const arrivalTimeNumH = arrivalTimeNum[0]
   const arrivalTimeNumM = arrivalTimeNum[1]
   const arrivalH = Number(arrivalTimeNumH)
   const arrivalM = Number(arrivalTimeNumM)
-  console.log('arrivalH', arrivalH, 'arrivalM', arrivalM)
+  // console.log('arrivalH', arrivalH, 'arrivalM', arrivalM)
 
 
   // Current Time
@@ -41,7 +41,7 @@ const workOutTime = (data, i) => {
   var t = d.getTime();
   var h = d.getHours()
   var m = d.getMinutes()
-  console.log('h', h, 'm', m)
+  // console.log('h', h, 'm', m)
   // const currentTime = []
   // const currentTimeArray = currentTime.push(h, m)
   // console.log('currentTimeArray', currentTimeArray)
@@ -49,23 +49,23 @@ const workOutTime = (data, i) => {
   if (arrivalH != h) {
     const minutesUntilHourChange = 60 - m
     const totalTimeUntilTrain = minutesUntilHourChange +  arrivalM
-    console.log('totalTimeUntilTrain', totalTimeUntilTrain)
+    // console.log('totalTimeUntilTrain', totalTimeUntilTrain)
     timeUntilTrain = totalTimeUntilTrain
-    console.log('timeUntilTrain in func:', timeUntilTrain)
+    // console.log('timeUntilTrain in func:', timeUntilTrain)
     // setTimeUntilArrival(timeUntilTrain)
     return (
     <TimeUntilComp><h2>{`${timeUntilTrain} minutes until the next train to London Euston`}</h2></TimeUntilComp>
     );
     // return timeUntilTrain
   } else if (arrivalH == h && arrivalM == m){
-    console.log('arrived!')
+    // console.log('arrived!')
     // this.state.setHasArrived(true)
     setTimeout(() => workOutTime(data, 1), 3000)
     return (
     <TimeUntilComp><h2>{`The train is at the platform`}</h2></TimeUntilComp>
     );
   } else if (arrivalH == h && m > arrivalM) {
-    console.log('train has gone!')
+    // console.log('train has gone!')
     setTimeout(() => workOutTime(data, 1), 3000)
     return (
     <TimeUntilComp><h2>{`You just missed it, refresh to see when the next one is`}</h2></TimeUntilComp>
@@ -75,15 +75,15 @@ const workOutTime = (data, i) => {
     <TimeUntilComp><h2>{`1 minute until the next train arrives`}</h2></TimeUntilComp>
     );
   } else {
-    console.log('same hour')
+    // console.log('same hour')
     const minutesLeft = arrivalM - m
-    console.log('minutes Left:', minutesLeft)
+    // console.log('minutes Left:', minutesLeft)
     timeUntilTrain = minutesLeft
     return (
     <TimeUntilComp><h2>{`${timeUntilTrain} minutes until the next train`}</h2></TimeUntilComp>
     );
   }
-  console.log('timeUntilTrain:', timeUntilTrain)
+  // console.log('timeUntilTrain:', timeUntilTrain)
   // return timeUntilTrain
 }
 
