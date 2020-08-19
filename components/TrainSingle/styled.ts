@@ -77,13 +77,15 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: ${(props) => props.row ? 'row' : 'column'};
   justify-content: flex-start;
-  .small-p {
-    font-size: 1rem;
-    opacity: 0.7;
-    padding-bottom: 3px;
-    ${'' /* text-decoration: underline; */}
-  }
   .destination {
     margin-left: 6px;
   }
+`
+
+export const SmallP = styled.p`
+  font-size: 1rem;
+  opacity: 0.7;
+  padding-bottom: 3px;
+  width: ${(props) => props.minWidth ? '52px' : null};
+
 `

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {TrainSingleComp, Status, InfoContainer} from './styled'
+import {TrainSingleComp, Status, InfoContainer, SmallP} from './styled'
 
 interface Props {
   expectedArrival?: string;
@@ -93,12 +93,12 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
       <div className='timeStatus'>
         <div className='timeDesination'>
           <InfoContainer className='infoContainer'>
-            <p className='small-p'>Berkhamsted</p>
-            <p className='arrival'>{expectedArrival}</p>
+            <SmallP className='small-p'>Berkhamsted</SmallP>
+            <SmallP className='arrival'>{expectedArrival}</SmallP>
           </InfoContainer>
           <InfoContainer className='infoContainer'>
-            <p className='small-p'>Euston ({getPlatform(timetable)})</p>
-            <p className='arrival'>{getEuston(timetable)}</p>
+            <SmallP className='small-p' minWidth>Euston <span>({getPlatform(timetable)})</span></SmallP>
+            <SmallP className='arrival'>{getEuston(timetable)}</SmallP>
           </InfoContainer>
 
         </div>
