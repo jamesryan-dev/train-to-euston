@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TrainSingle from '../TrainSingle'
 
 interface Props {
-  all: any;
+  all: Array<any>;
   itemsAll: Array<any>;
 }
 
