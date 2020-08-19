@@ -12,8 +12,15 @@ const workOutTime = (data, i) => {
   // console.log('items.all', data.all)
   let itemsAll = data
   console.log('itemsAll', itemsAll)
-  const result = data.filter(item => item.destination_name = "London Euston");
-  console.log('result:', result);
+  // const result = data.filter(item => item.destination_name = "London Euston");
+  // console.log('result:', result);
+  const resultEuston = itemsAll.filter(item => item.destination_name == "London Euston");
+  console.log('result Euston', resultEuston)
+  // const result = resultEuston.filter(item => item.origin_name == "Milton Keynes Central");
+
+  const result = resultEuston.filter(function(result) {
+   return result.origin_name === "Milton Keynes Central" || result.origin_name === "Northampton" || result.origin_name === "Tring";
+   });
   let first = result[i]
   console.log('first', first)
 
