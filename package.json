@@ -9,7 +9,11 @@
     "lint": "eslint --fix ./ --ext .js,.jsx,.ts,.tsx --cache"
   },
   "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "@zeit/next-sass": "^1.0.1",
     "next": "9.4.4",
+    "next-compose-plugins": "^2.2.0",
+    "next-svgr": "0.0.2",
     "react": "16.13.1",
     "react-dom": "16.13.1"
   },
