@@ -36,10 +36,14 @@ function RenderTrains(): JSX.Element {
       console.log('items.all', items.all)
       let itemsAll = items.all
       console.log('itemsAll', itemsAll)
-      const testing = items.all.find(item => item.origin_name = "Milton Keynes Central");
-    console.log('testing', testing)
-      const resultEuston = items.all.filter(item => item.destination_name = "London Euston");
-      const result = resultEuston.filter(item => item.origin_name = "Milton Keynes Central");
+      const resultEuston = items.all.filter(item => item.destination_name == "London Euston");
+      console.log('result Euston', resultEuston)
+      // const result = resultEuston.filter(item => item.origin_name == "Milton Keynes Central");
+
+      const result = resultEuston.filter(function(result) {
+       return result.origin_name === "Milton Keynes Central" || result.origin_name === "Northampton" || result.origin_name === "Tring";
+       });
+
       console.log('result:', result);
       return (
         <ul>

@@ -5,7 +5,7 @@ interface Props {
   expectedArrival?: string;
   status: string;
   destination: string;
-  onTime: boolean;
+  time: boolean;
   early: boolean;
   late: boolean;
 }
@@ -15,7 +15,7 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
   const renderStatus = (status) => {
     if (status == 'ON TIME') {
       return (
-        <Status onTime>On time</Status>
+        <Status time>On time</Status>
       )
     } else if (status == 'EARLY') {
       return (

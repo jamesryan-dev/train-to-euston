@@ -11,9 +11,9 @@ export const Status = styled.div`
     font-size: 1rem;
     background: #004c45;
     ${({ early }) => (early ? Early(early) : null)};
-    ${({ onTime }) => (onTime ? OnTime(onTime) : null)};
     ${({ late }) => (late ? Late(late) : null)};
     ${({changeOfOrigin}) => (changeOfOrigin ? ChangeOfOrigin(changeOfOrigin) : null)};
+    ${({ time }) => (time ? OnTime(time) : null)};
 `
 
 const Early = () => {
