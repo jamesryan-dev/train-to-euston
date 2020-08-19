@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {TrainSingleComp, Status, InfoContainer} from './styled'
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   late: boolean;
 }
 
-const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onTime, early, late}): JSX.Element => {
+const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onTime, early, late, service_timetable}): JSX.Element => {
 
   const renderStatus = (status) => {
     if (status == 'ON TIME') {
@@ -32,6 +32,28 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
     }
   }
 
+  const renderEustonArrival = (result) => {
+    console.log('result in renderEustonArrival', result)
+    return (
+      <div>
+        lol
+      </div>
+    )
+  }
+
+  useEffect(() => {
+      fetch(service_timetable.id)
+        .then(res => res.json())
+        .then(
+          (result) => {
+            console.log('timetable result:', result )
+          },
+          (error) => {
+            console.log('error', error)
+          }
+        )
+    }, [])
+
   return (
     <TrainSingleComp>
       <div className='timeStatus'>
@@ -42,6 +64,7 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
           </InfoContainer>
         </div>
       {renderStatus(status)}
+      {renderEustonArrival()}
       </div>
     </TrainSingleComp>
   );

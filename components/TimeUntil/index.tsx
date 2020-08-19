@@ -96,6 +96,7 @@ function TimeUntil(): JSX.Element {
   const [hasArrived, setHasArrived] = useState(false)
   const [timeUntilArrival, setTimeUntilArrival] = useState(0)
   const [items, setItems] = useState([]);
+  const [timetables, setTimetables] = useState([]);
 
 
   useEffect(() => {
@@ -103,10 +104,11 @@ function TimeUntil(): JSX.Element {
         .then(res => res.json())
         .then(
           (result) => {
-            console.log('isLoaded:', isLoaded, 'hasWorked, ', hasWorked, ' result.departures:', result.departures )
+            console.log('result.departures.service_timetable:', result.departures.service_timetable, 'isLoaded:', isLoaded, 'hasWorked, ', hasWorked, ' result.departures:', result.departures )
             setIsLoaded(true);
             setItems(result.departures);
             setHasWorked(true);
+            setTimetables(fetch(result.departures.service_timetable))
           },
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
@@ -116,6 +118,11 @@ function TimeUntil(): JSX.Element {
             setError(error);
           }
         )
+        // .then(
+        //   (result) => console.log('result.departures.service_timetable:', result)
+        //
+        //   // (result) => fetch(result.departures.service_timetable)
+        // )
     }, [])
     let timeUntilTrain
     if (error) {
