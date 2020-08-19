@@ -1,4 +1,5 @@
-import TrainSvg from './train.svg'
+// import TrainSvg from './train.svg'
+const TrainSvg = require("./train.svg") as string;
 import {HeaderComp} from './styled'
 
 const Header = (): JSX.Element => {
