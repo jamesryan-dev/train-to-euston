@@ -41,36 +41,45 @@ function RenderTrains(): JSX.Element {
   } else if (!isLoaded) {
     return <div>Loading...</div>;
   } else if (isLoaded && hasWorked) {
-      // console.log('items wasnt undefined', items)
+      console.log('items wasnt undefined', items)
       // console.log('items.all', items.all)
-      let itemsAll = items.all
-      console.log('itemsAll', itemsAll)
-      const resultEuston = items.all.filter(item => item.destination_name == "London Euston");
-      // console.log('result Euston', resultEuston)
-      // const result = resultEuston.filter(item => item.origin_name == "Milton Keynes Central");
+      if (items.all != undefined) {
+        let itemsAll = items.all
+        console.log('itemsAll', itemsAll)
+        const resultEuston = items.all.filter(item => item.destination_name == "London Euston");
+        // console.log('result Euston', resultEuston)
+        // const result = resultEuston.filter(item => item.origin_name == "Milton Keynes Central");
 
-      const result = resultEuston.filter(function(result) {
-       return result.origin_name === "Milton Keynes Central" || result.origin_name === "Northampton" || result.origin_name === "Tring";
-       });
+        const result = resultEuston.filter(function(result) {
+         return result.origin_name === "Milton Keynes Central" || result.origin_name === "Northampton" || result.origin_name === "Tring";
+         });
 
-      console.log('result:', result);
-      return (
-        <ul>
-        {result.map(item => {
-          return (
-            <TrainSingle
-              key={item.train_uid}
-              expectedArrival={item.expected_arrival_time}
-              status={item.status}
-              destination={item.destination_name}
-              operator_name={item.operator_name}
-              service_timetable={item.service_timetable}
-             />
-          )
-        }
-        )}
-        </ul>
-      );
+         const firstFour = result.slice(0, 4)
+         console.log('first four:', firstFour)
+
+        console.log('result:', result);
+        return (
+          <>
+          <div>
+          {result.map(item => {
+            return (
+              <TrainSingle
+                key={item.train_uid}
+                expectedArrival={item.expected_arrival_time}
+                status={item.status}
+                destination={item.destination_name}
+                operator_name={item.operator_name}
+                service_timetable={item.service_timetable}
+               />
+            )
+          }
+          )}
+          </div>
+          <p>Show more</p>
+          </>
+        );
+      }
+
     } else {
       return (
         <h1>no data loaded</h1>
