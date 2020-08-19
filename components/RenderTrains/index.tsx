@@ -3,9 +3,9 @@ import TrainSingle from '../TrainSingle'
 
 interface Props {
   all: any;
+  itemsAll: Array;
 }
 
-let itemsAll: Array<any>;
 
 function RenderTrains({ all }: Props): JSX.Element {
   const [error, setError] = useState(null);
