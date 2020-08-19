@@ -3,7 +3,7 @@ import TrainSingle from '../TrainSingle'
 
 interface Props {
   all: any;
-  itemsAll: Array;
+  itemsAll: Array<any>;
 }
 
 
