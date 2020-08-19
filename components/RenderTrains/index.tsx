@@ -5,6 +5,8 @@ interface Props {
   all: any;
 }
 
+let itemsAll: Array<any>;
+
 function RenderTrains({ all }: Props): JSX.Element {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
