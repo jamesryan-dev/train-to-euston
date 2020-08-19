@@ -1,5 +1,6 @@
 import { ServerStyleSheet } from "styled-components";
 import Document, { Main, NextScript, Html, Head } from "next/document";
+import { ServerStyleSheets } from '@material-ui/core/styles';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -32,7 +33,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <title>Verlay</title>
           <link rel="icon" href="/favicon.ico" />
           <link
             href="https://fonts.googleapis.com/css2?family=Lateef&display=swap"
