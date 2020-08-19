@@ -14,6 +14,7 @@ export const Status = styled.div`
     ${({ late }) => (late ? Late(late) : null)};
     ${({changeOfOrigin}) => (changeOfOrigin ? ChangeOfOrigin(changeOfOrigin) : null)};
     ${({ time }) => (time ? OnTime(time) : null)};
+    ${({ noReport }) => (noReport ? NoReport(noReport) : null)};
 `
 
 const Early = () => {
@@ -44,6 +45,12 @@ const ChangeOfOrigin = () => {
   `
 }
 
+const NoReport = () => {
+  return`
+    color: #3b7afc;
+  `
+}
+
 export const TrainSingleComp = styled.div`
   margin-bottom: 2rem;
   background-color: #3a7b75;
@@ -54,9 +61,10 @@ export const TrainSingleComp = styled.div`
   .timeDesination {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    flex: 1;
+    width: 60%;
+    /* flex: 1; */
     .arrival {
       font-size: 1.6rem;
       padding-bottom: 4px;

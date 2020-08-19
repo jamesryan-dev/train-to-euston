@@ -8,9 +8,10 @@ interface Props {
   time: boolean;
   early: boolean;
   late: boolean;
+  noReport: boolean;
 }
 
-const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onTime, early, late, service_timetable}): JSX.Element => {
+const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name}): JSX.Element => {
   const [timetables, setTimetables] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -33,6 +34,10 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
     } else if (status == 'CHANGE OF ORIGIN') {
       return (
         <Status changeOfOrigin>Change of origin</Status>
+      )
+    } else if (status == "NO REPORT") {
+      return (
+        <Status noReport>No report</Status>
       )
     }
   }
@@ -78,7 +83,16 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
     }
   }
 
-  const getPlatform = (timetable) => {
+  const getBerkhamstedPlatform = (timetable) => {
+    if (timetable != undefined) {
+      // console.log('timetable in func != undefined:', timetable)
+      const berkhamsted = timetable.find(stop => stop.station_code == 'BKM')
+      const berkhamstedPlatform= berkhamsted.platform
+      return berkhamstedPlatform
+    }
+  }
+
+  const getEustonPlatform = (timetable) => {
     if (timetable != undefined) {
       // console.log('timetable in func != undefined:', timetable)
       const euston = timetable.find(stop => stop.station_code == 'EUS')
@@ -95,10 +109,12 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
           <InfoContainer className='infoContainer'>
             <SmallP className='small-p'>Berkhamsted</SmallP>
             <SmallP className='arrival'>{expectedArrival}</SmallP>
+            <SmallP>{operator_name}</SmallP>
           </InfoContainer>
           <InfoContainer className='infoContainer'>
-            <SmallP className='small-p' minWidth>Euston <span>({getPlatform(timetable)})</span></SmallP>
+            <SmallP className='small-p' minWidth>Euston</SmallP>
             <SmallP className='arrival'>{getEuston(timetable)}</SmallP>
+            <SmallP>Platform {getEustonPlatform(timetable)}</SmallP>
           </InfoContainer>
 
         </div>
