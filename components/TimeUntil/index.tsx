@@ -18,7 +18,7 @@ const workOutTime = (data, i) => {
 
   // Arrival Time
 
-  const arrivalTime = first.aimed_arrival_time
+  const arrivalTime = first.expected_arrival_time
   const arrivalTimeNum = arrivalTime.split(':')
   console.log('arrivalTime', arrivalTime, 'arrivalTimeNum', arrivalTimeNum)
   const arrivalTimeNumH = arrivalTimeNum[0]

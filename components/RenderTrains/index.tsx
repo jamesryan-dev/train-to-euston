@@ -42,7 +42,14 @@ function RenderTrains(): JSX.Element {
         <ul>
         {result.map(item => {
           return (
-            <TrainSingle key={item.train_uid} expectedArrival={item.expected_arrival_time} status={item.status} destination={item.destination_name} />
+            <TrainSingle 
+              key={item.train_uid}
+              expectedArrival={item.expected_arrival_time}
+              status={item.status}
+              destination={item.destination_name}
+              operator_name={item.operator_name}
+              service_timetable={item.service_timetable}
+             />
           )
         }
         )}
