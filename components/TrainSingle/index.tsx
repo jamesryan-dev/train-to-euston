@@ -1,5 +1,5 @@
 import React from 'react';
-import {TrainSingleComp, Status} from './styled'
+import {TrainSingleComp, Status, InfoContainer} from './styled'
 
 interface Props {
   expectedArrival?: string;
@@ -36,8 +36,10 @@ const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onT
     <TrainSingleComp>
       <div className='timeStatus'>
         <div className='timeDesination'>
-          <p className='arrival'>{expectedArrival}</p>
-          <p className='destination'>{destination}</p>
+          <InfoContainer className='infoContainer'>
+            <p className='small-p'>Berkhamsted</p>
+            <p className='arrival'>{expectedArrival}</p>
+          </InfoContainer>
         </div>
       {renderStatus(status)}
       </div>

@@ -36,13 +36,16 @@ function RenderTrains(): JSX.Element {
       console.log('items.all', items.all)
       let itemsAll = items.all
       console.log('itemsAll', itemsAll)
-      const result = items.all.filter(item => item.destination_name = "London Euston");
+      const testing = items.all.find(item => item.origin_name = "Milton Keynes Central");
+    console.log('testing', testing)
+      const resultEuston = items.all.filter(item => item.destination_name = "London Euston");
+      const result = resultEuston.filter(item => item.origin_name = "Milton Keynes Central");
       console.log('result:', result);
       return (
         <ul>
         {result.map(item => {
           return (
-            <TrainSingle 
+            <TrainSingle
               key={item.train_uid}
               expectedArrival={item.expected_arrival_time}
               status={item.status}
