@@ -47,7 +47,8 @@ function RenderTrains({ all }: Props): JSX.Element {
   } else if (isLoaded && hasWorked) {
       console.log('items wasnt undefined', items)
       // console.log('items.all', items.all)
-      if (items.all != undefined) {
+      //if (items.all !== undefined) {
+      if (items !== undefined) {
         let itemsAll = items.all
         console.log('itemsAll', itemsAll)
         const resultEuston = items.all.filter(item => item.destination_name == "London Euston");
