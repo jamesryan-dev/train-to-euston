@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {TimeUntilComp} from './styled'
 
-interface Props {
-  expectedArrival?: string;
-  status: string;
-  destination: string;
-}
+// interface Props {
+//   expectedArrival?: string;
+//   status: string;
+//   destination: string;
+// }
 
 const workOutTime = (data, i) => {
   // console.log('items wasnt undefined', data)
@@ -88,7 +88,7 @@ const workOutTime = (data, i) => {
 }
 
 
-function TimeUntil(): JSX.Element {
+function TimeUntil() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasWorked, setHasWorked] = useState(false);
