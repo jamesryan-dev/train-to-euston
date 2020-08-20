@@ -1,7 +1,7 @@
 import TimeUntil from '../components/TimeUntil'
 import RenderTrains from '../components/RenderTrains'
 
-function Home(): JSX.Element {
+function Home() {
   return (
     <div className="container">
       <>

@@ -16,6 +16,8 @@ const GlobalStyles = createGlobalStyle`
     margin: 0 !important;
     font-family: 'porpora', Tahoma, Geneva, sans-serif;
     font-size: 10px;
+    background: #004c45;
+    background: #173e3a;
   }
 
   html {
@@ -62,6 +64,10 @@ const GlobalStyles = createGlobalStyle`
     font: inherit;
     cursor: pointer;
     outline: inherit;
+  }
+
+  .container {
+    padding: 0 5%;
   }
 `;
 
