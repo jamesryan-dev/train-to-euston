@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import TrainSingle from '../TrainSingle'
-
-interface Props {
-  items: {
-    all: Array<Object>;
-  }
-}
-
 // function RenderTrains(): JSX.Element {
 
-function RenderTrains(props: Props): JSX.Element {
+function RenderTrains() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasWorked, setHasWorked] = useState(false);
@@ -53,6 +46,7 @@ function RenderTrains(props: Props): JSX.Element {
       // console.log('items.all', items.all)
       let itemsAll = items.all
       console.log('itemsAll', itemsAll)
+      console.log('typeOf itemsAll', typeof itemsAll)
       const resultEuston = items.all.filter(item => item.destination_name == "London Euston");
       // console.log('result Euston', resultEuston)
       // const result = resultEuston.filter(item => item.origin_name == "Milton Keynes Central");
