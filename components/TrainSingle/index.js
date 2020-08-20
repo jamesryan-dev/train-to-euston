@@ -20,6 +20,8 @@ import {TrainSingleComp, Status, InfoContainer, SmallP} from './styled'
 //
 // }
 
+
+
 const TrainSingle = (props) => {
 // const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name}): JSX.Element => {
   const [timetables, setTimetables] = useState([]);
@@ -112,6 +114,37 @@ const TrainSingle = (props) => {
       return eustonPlatform
     }
   }
+
+  const renderAllStationsOnJourney = (timetable) => {
+    if (timetable != undefined) {
+      console.log('timetable:', timetable)
+      return timetable.map((stop, i) => {
+        // console.log('stop', stop)
+        let count = 0;
+        const { station_code, station_name, expected_arrival_time } = stop
+        // console.log('station_code', station_code)
+        if (
+            station_code == "HML" ||
+            station_code == "APS" ||
+            station_code == "KGL" ||
+            station_code == "WFJ" ||
+            station_code == "BSH" ||
+            station_code == "HRW"
+          ) {
+          console.log('successful stop:', stop)
+          count = i
+          console.log('count', count)
+          return (
+            <InfoContainer className='infoContainer'>
+              <SmallP className='small-p'>{station_name}</SmallP>
+              <SmallP className='arrival'>{expected_arrival_time}</SmallP>
+            </InfoContainer>
+          )
+        }
+      })
+    }
+  }
+
   return (
     <TrainSingleComp>
       <div className='timeStatus'>
@@ -121,6 +154,9 @@ const TrainSingle = (props) => {
             <SmallP className='arrival'>{expectedArrival}</SmallP>
             <SmallP>{operator_name}</SmallP>
           </InfoContainer>
+          <div className='additionalStops'>
+            {renderAllStationsOnJourney(timetable)}
+          </div>
           <InfoContainer className='infoContainer'>
             <SmallP className='small-p' minWidth>Euston</SmallP>
             <SmallP className='arrival'>{getEuston(timetable)}</SmallP>
