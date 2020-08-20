@@ -1,33 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import {TrainSingleComp, Status, InfoContainer, SmallP} from './styled'
 
-interface Props {
-  expectedArrival?: string;
-  status: string;
-  destination: string;
-  time: boolean;
-  early: boolean;
-  late: boolean;
-  noReport: boolean;
-  onTime: any;
-  operator_name: string;
-  service_timetable: {
-    id?: string;
-    timetables: {
-      stops?: array;
-    }
-  };
+// interface Props {
+//   expectedArrival?: string;
+//   status: string;
+//   destination: string;
+//   time: boolean;
+//   early: boolean;
+//   late: boolean;
+//   noReport: boolean;
+//   onTime: any;
+//   operator_name: string;
+//   service_timetable: {
+//     id?: string;
+//     timetables: {
+//       stops?: array;
+//     }
+//   };
+//
+// }
 
-}
-
-
-const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name}): JSX.Element => {
+const TrainSingle = (props) => {
+// const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name}): JSX.Element => {
   const [timetables, setTimetables] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasWorked, setHasWorked] = useState(false);
   const [hasError, setHasError] = useState(false)
-
+  const {expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name} = props
   const renderStatus = (status) => {
     if (status == 'ON TIME') {
       return (
