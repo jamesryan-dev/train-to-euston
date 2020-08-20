@@ -136,10 +136,7 @@ const TrainSingle = (props) => {
           count = i
           console.log('count', count)
           return (
-            <InfoContainer className='infoContainer'>
-              <SmallP className='small-p'>{station_name}</SmallP>
-              <SmallP className='arrival'>{expected_arrival_time}</SmallP>
-            </InfoContainer>
+            <InfoContainerComp name={station_name} arrival={expected_arrival_time} />
           )
         }
       })
@@ -151,12 +148,10 @@ const TrainSingle = (props) => {
       <div className='timeStatus'>
         <div className='timeDesination'>
           <InfoContainerComp firstStop name='Berkhamsted' arrival={expectedArrival} platformNumber={null} operatorName={operator_name} />
-
           <div className='additionalStops'>
-
+          {renderAllStationsOnJourney(timetable)}
           </div>
           <InfoContainerComp finalDestination name='Euston' arrival={getEuston(timetable)} platformNumber={getEustonPlatform(timetable)} />
-
         </div>
       {renderStatus(status)}
 
