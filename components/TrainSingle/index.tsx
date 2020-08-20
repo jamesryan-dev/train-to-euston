@@ -13,10 +13,11 @@ interface Props {
   operator_name: string;
   service_timetable: {
     id?: string;
+    timetables: {
+      stops?: array;
+    }
   };
-  timetables: {
-    stops?: any;
-  }
+
 }
 
 
