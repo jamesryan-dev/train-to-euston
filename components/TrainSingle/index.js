@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {TrainSingleComp, Status, InfoContainer, SmallP} from './styled'
+import InfoContainerComp from './InfoContainer.js'
 
 // interface Props {
 //   expectedArrival?: string;
@@ -144,24 +145,17 @@ const TrainSingle = (props) => {
       })
     }
   }
-
+// {renderAllStationsOnJourney(timetable)}
   return (
-    <TrainSingleComp>
+    <TrainSingleComp >
       <div className='timeStatus'>
         <div className='timeDesination'>
-          <InfoContainer className='infoContainer'>
-            <SmallP className='small-p'>Berkhamsted</SmallP>
-            <SmallP className='arrival'>{expectedArrival}</SmallP>
-            <SmallP>{operator_name}</SmallP>
-          </InfoContainer>
+          <InfoContainerComp firstStop name='Berkhamsted' arrival={expectedArrival} platformNumber={null} operatorName={operator_name} />
+
           <div className='additionalStops'>
-            {renderAllStationsOnJourney(timetable)}
+
           </div>
-          <InfoContainer className='infoContainer'>
-            <SmallP className='small-p' minWidth>Euston</SmallP>
-            <SmallP className='arrival'>{getEuston(timetable)}</SmallP>
-            <SmallP>Platform {getEustonPlatform(timetable)}</SmallP>
-          </InfoContainer>
+          <InfoContainerComp finalDestination name='Euston' arrival={getEuston(timetable)} platformNumber={getEustonPlatform(timetable)} />
 
         </div>
       {renderStatus(status)}
