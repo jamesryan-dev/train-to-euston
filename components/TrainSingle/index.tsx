@@ -9,6 +9,9 @@ interface Props {
   early: boolean;
   late: boolean;
   noReport: boolean;
+  onTime: any;
+  operator_name: string;
+  service_timetable: object;
 }
 
 const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name}): JSX.Element => {
