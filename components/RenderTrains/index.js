@@ -10,7 +10,7 @@ function RenderTrains() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-      fetch("http://transportapi.com/v3/uk/train/station/BKM/live.json?query&app_id=ceabf0ac&app_key=3d40a87351cfa3eebd978e20372e44e6")
+      fetch("https://transportapi.com/v3/uk/train/station/BKM/live.json?query&app_id=ceabf0ac&app_key=3d40a87351cfa3eebd978e20372e44e6")
         .then(res => res.json())
         .then(
           (result) => {
