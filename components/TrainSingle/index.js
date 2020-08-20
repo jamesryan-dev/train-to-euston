@@ -29,28 +29,30 @@ const TrainSingle = (props) => {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasWorked, setHasWorked] = useState(false);
-  const [hasError, setHasError] = useState(false)
+  const [hasError, setHasError] = useState(false);
+  const [showAdditonalStopsState, setShowAdditonalStopsState] = useState(false);
+
   const {expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name, showAdditionalStops} = props
   const renderStatus = (status) => {
     if (status == 'ON TIME') {
       return (
-        <Status time>On time</Status>
+        <Status className='status' time>On time</Status>
       )
     } else if (status == 'EARLY') {
       return (
-        <Status early>Early</Status>
+        <Status className='status' early>Early</Status>
       )
     } else if (status == 'LATE') {
       return (
-        <Status late>Late</Status>
+        <Status className='status' late>Late</Status>
       )
     } else if (status == 'CHANGE OF ORIGIN') {
       return (
-        <Status changeOfOrigin>Change of origin</Status>
+        <Status className='status' changeOfOrigin>Change of origin</Status>
       )
     } else if (status == "NO REPORT") {
       return (
-        <Status noReport>No report</Status>
+        <Status className='status' noReport>No report</Status>
       )
     }
   }
@@ -142,14 +144,25 @@ const TrainSingle = (props) => {
       })
     }
   }
-// {renderAllStationsOnJourney(timetable)}
+
+  const handleShowAdditionalStops = () => {
+    // console.log('clicked single train: setShowAdditonalStopsState-->', showAdditonalStopsState)
+    if (showAdditonalStopsState == true) {
+      setShowAdditonalStopsState(false)
+    } else {
+      setShowAdditonalStopsState(true)
+    }
+  }
+// {renderAllStationsOnJourney(timetable)}this.state.value ? "badge-primary " : "badge-danger ")
   return (
-    <TrainSingleComp showAdditionalStops={false}>
+    <TrainSingleComp className={showAdditonalStopsState ? " open" : "closed" } showAdditionalStops={showAdditonalStopsState} onClick={handleShowAdditionalStops}>
       <div className='timeStatus'>
         <div className='timeDesination'>
-          <InfoContainerComp firstStop name='Berkhamsted' arrival={expectedArrival} platformNumber={null} operatorName={operator_name} />
-          <div className='additionalStops'>
-          {renderAllStationsOnJourney(timetable)}
+          <div className='eustonAdditional'>
+            <InfoContainerComp firstStop name='Berkhamsted' arrival={expectedArrival} platformNumber={null} operatorName={operator_name} />
+            <div className='additionalStops'>
+              {renderAllStationsOnJourney(timetable)}
+            </div>
           </div>
           <InfoContainerComp finalDestination name='Euston' arrival={getEuston(timetable)} platformNumber={getEustonPlatform(timetable)} />
         </div>

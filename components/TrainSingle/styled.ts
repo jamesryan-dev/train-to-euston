@@ -1,6 +1,21 @@
 import styled from 'styled-components'
 
 export const TrainSingleComp = styled.div`
+  &.open {
+    box-shadow: 0 7px 13px rgba(11,31,29, 0.19), 0 4px 5px rgba(11,31,29, 0.23);
+    .timeStatus {
+      align-items: flex-start;
+      .status {
+        margin-top: 1.6rem;
+      }
+    }
+    .timeDesination {
+      /* flex-direction: column; */
+      .infoContainer {
+        margin-bottom: 1.2rem;
+      }
+    }
+  }
   margin-bottom: 2rem;
   background-color: #3a7b75;
   border-radius: 6px;
