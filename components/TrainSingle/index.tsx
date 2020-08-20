@@ -12,10 +12,10 @@ interface Props {
   onTime: any;
   operator_name: string;
   service_timetable: {
-    id: string;
+    id?: string;
   };
   timetables: {
-    stops: any;
+    stops?: any;
   }
 }
 
