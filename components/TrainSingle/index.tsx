@@ -13,6 +13,10 @@ interface Props {
   operator_name: string;
   service_timetable: {
     id: string;
+    stops: {
+      station_code: string;
+      platform: string;
+    };
   };
 }
 
