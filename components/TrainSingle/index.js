@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {TrainSingleComp, Status, InfoContainer, SmallP} from './styled'
+import InfoContainerComp from './InfoContainer.js'
 
 // interface Props {
 //   expectedArrival?: string;
@@ -20,46 +21,50 @@ import {TrainSingleComp, Status, InfoContainer, SmallP} from './styled'
 //
 // }
 
+
+
 const TrainSingle = (props) => {
 // const TrainSingle: React.FC<Props> = ({expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name}): JSX.Element => {
   const [timetables, setTimetables] = useState([]);
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasWorked, setHasWorked] = useState(false);
-  const [hasError, setHasError] = useState(false)
-  const {expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name} = props
+  const [hasError, setHasError] = useState(false);
+  const [showAdditonalStopsState, setShowAdditonalStopsState] = useState(false);
+
+  const {expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name, showAdditionalStops} = props
   const renderStatus = (status) => {
     if (status == 'ON TIME') {
       return (
-        <Status time>On time</Status>
+        <Status className='status' time>On time</Status>
       )
     } else if (status == 'EARLY') {
       return (
-        <Status early>Early</Status>
+        <Status className='status' early>Early</Status>
       )
     } else if (status == 'LATE') {
       return (
-        <Status late>Late</Status>
+        <Status className='status' late>Late</Status>
       )
     } else if (status == 'CHANGE OF ORIGIN') {
       return (
-        <Status changeOfOrigin>Change of origin</Status>
+        <Status className='status' changeOfOrigin>Change of origin</Status>
       )
     } else if (status == "NO REPORT") {
       return (
-        <Status noReport>No report</Status>
+        <Status className='status' noReport>No report</Status>
       )
     }
   }
 
-  const renderEustonArrival = (result) => {
-    console.log('result in renderEustonArrival', result)
-    return (
-      <div>
-        lol
-      </div>
-    )
-  }
+  // const renderEustonArrival = (result) => {
+  //   console.log('result in renderEustonArrival', result)
+  //   return (
+  //     <div>
+  //       lol
+  //     </div>
+  //   )
+  // }
 
   useEffect(() => {
       fetch(service_timetable.id)
@@ -112,21 +117,54 @@ const TrainSingle = (props) => {
       return eustonPlatform
     }
   }
+
+  const renderAllStationsOnJourney = (timetable) => {
+    if (timetable != undefined) {
+      console.log('timetable:', timetable)
+      return timetable.map((stop, i) => {
+        // console.log('stop', stop)
+        let count = 0;
+        const { station_code, station_name, expected_arrival_time } = stop
+        // console.log('station_code', station_code)
+        if (
+            station_code == "HML" ||
+            station_code == "APS" ||
+            station_code == "KGL" ||
+            station_code == "WFJ" ||
+            station_code == "BSH" ||
+            station_code == "HRW"
+          ) {
+          console.log('successful stop:', stop)
+          count = i
+          console.log('count', count)
+          return (
+            <InfoContainerComp name={station_name} arrival={expected_arrival_time} />
+          )
+        }
+      })
+    }
+  }
+
+  const handleShowAdditionalStops = () => {
+    // console.log('clicked single train: setShowAdditonalStopsState-->', showAdditonalStopsState)
+    if (showAdditonalStopsState == true) {
+      setShowAdditonalStopsState(false)
+    } else {
+      setShowAdditonalStopsState(true)
+    }
+  }
+// {renderAllStationsOnJourney(timetable)}this.state.value ? "badge-primary " : "badge-danger ")
   return (
-    <TrainSingleComp>
+    <TrainSingleComp className={showAdditonalStopsState ? " open" : "closed" } showAdditionalStops={showAdditonalStopsState} onClick={handleShowAdditionalStops}>
       <div className='timeStatus'>
         <div className='timeDesination'>
-          <InfoContainer className='infoContainer'>
-            <SmallP className='small-p'>Berkhamsted</SmallP>
-            <SmallP className='arrival'>{expectedArrival}</SmallP>
-            <SmallP>{operator_name}</SmallP>
-          </InfoContainer>
-          <InfoContainer className='infoContainer'>
-            <SmallP className='small-p' minWidth>Euston</SmallP>
-            <SmallP className='arrival'>{getEuston(timetable)}</SmallP>
-            <SmallP>Platform {getEustonPlatform(timetable)}</SmallP>
-          </InfoContainer>
-
+          <div className='eustonAdditional'>
+            <InfoContainerComp firstStop name='Berkhamsted' arrival={expectedArrival} platformNumber={null} operatorName={operator_name} />
+            <div className='additionalStops'>
+              {renderAllStationsOnJourney(timetable)}
+            </div>
+          </div>
+          <InfoContainerComp finalDestination name='Euston' arrival={getEuston(timetable)} platformNumber={getEustonPlatform(timetable)} />
         </div>
       {renderStatus(status)}
 
