@@ -16,6 +16,13 @@ export const TrainSingleComp = styled.div`
       }
     }
   }
+  .eustonAdditional {
+    .additionalStops {
+      .small-p {
+        width: 100%;
+      }
+    }
+  }
   margin-bottom: 2rem;
   background-color: #3a7b75;
   border-radius: 6px;
@@ -46,6 +53,10 @@ export const TrainSingleComp = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    align-items: flex-start;
+    .status {
+      margin-top: 1.6rem;
+    }
   }
 `
 

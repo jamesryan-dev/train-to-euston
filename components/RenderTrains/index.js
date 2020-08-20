@@ -36,7 +36,9 @@ function RenderTrains() {
         //   console.log('data', data)
         // })
     }, [])
-
+    if (items == undefined) {
+      return <div>Error: {error.message}</div>
+    }
     if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -52,8 +54,8 @@ function RenderTrains() {
       // const result = resultEuston.filter(item => item.origin_name == "Milton Keynes Central");
 
       const result = resultEuston.filter(function(result) {
-       return result.origin_name === "Milton Keynes Central" || result.origin_name === "Northampton" || result.origin_name === "Tring";
-       });
+       return result.origin_name === "Milton Keynes Central" || result.origin_name === "Northampton" || result.origin_name === "Tring" || result.origin_name === 'Birmingham New Street';
+     });
 
       console.log('result:', result);
       return (
