@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import TrainSingle from '../TrainSingle'
 
+interface Props {
+  items: {
+    all: any;
+  }
+}
+
 function RenderTrains(): JSX.Element {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
