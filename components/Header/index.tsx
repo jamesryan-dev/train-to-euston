@@ -1,4 +1,4 @@
-import TrainSVGComp from './TrainSVG.js'
+import TrainSVGComp from './TrainSvg.js'
 import {HeaderComp} from './styled'
 
 const Header: React.FC<Props> = ({title}): JSX.Element => {
