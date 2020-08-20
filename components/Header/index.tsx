@@ -1,13 +1,13 @@
-import TrainSvg from './train.svg'
+import TrainSVGComp from './TrainSVG'
 import {HeaderComp} from './styled'
 
-const Header = (): JSX.Element => {
+const Header: React.FC<Props> = ({title}): JSX.Element => {
   return (
     <HeaderComp>
       <div className='container'>
         <div className='headerFlex'>
-          <TrainSvg />
-          <h3>Berkhamsted to Euston</h3>
+          <TrainSVGComp />
+          <h3>{title}</h3>
         </div>
       </div>
     </HeaderComp>

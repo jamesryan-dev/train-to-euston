@@ -14,9 +14,9 @@ export default class MyApp extends App {
       <ThemeProvider theme={theme}>
         <GlobalStyles />
         <Head>
-          <title>Verlay</title>
+          <title>Berkhamsted Train App</title>
         </Head>
-        <Header />
+        <Header title="Berkhamsted to Euston" />
         <Component {...pageProps} key={router.route} />
       </ThemeProvider>
     );

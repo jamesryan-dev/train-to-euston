@@ -13,6 +13,7 @@ h3 {
 }
   svg {
     width: 30px;
+    enable-background:new 0 0 512 512;
     /* path {
       fill: #f0f0f0;
     } */
@@ -25,5 +26,4 @@ h3 {
     justify-content: space-between;
     align-items: center;
   }
-
 `
