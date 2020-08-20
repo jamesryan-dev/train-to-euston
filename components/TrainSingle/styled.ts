@@ -10,11 +10,11 @@ export const Status = styled.div`
     color: white;
     font-size: 1rem;
     background: #004c45;
-    ${({ early }) => (early ? Early(early) : null)};
-    ${({ late }) => (late ? Late(late) : null)};
-    ${({changeOfOrigin}) => (changeOfOrigin ? ChangeOfOrigin(changeOfOrigin) : null)};
-    ${({ time }) => (time ? OnTime(time) : null)};
-    ${({ noReport }) => (noReport ? NoReport(noReport) : null)};
+    ${({ early }) => (early ? Early() : null)};
+    ${({ late }) => (late ? Late() : null)};
+    ${({changeOfOrigin}) => (changeOfOrigin ? ChangeOfOrigin() : null)};
+    ${({ time }) => (time ? OnTime() : null)};
+    ${({ noReport }) => (noReport ? NoReport() : null)};
 `
 
 const Early = () => {
