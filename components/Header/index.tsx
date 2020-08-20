@@ -1,6 +1,10 @@
 import TrainSVGComp from './TrainSvg.js'
 import {HeaderComp} from './styled'
 
+interface Props {
+  title: String;
+}
+
 const Header: React.FC<Props> = ({title}): JSX.Element => {
   return (
     <HeaderComp>
