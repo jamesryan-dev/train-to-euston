@@ -7,7 +7,9 @@ interface Props {
   }
 }
 
-function RenderTrains(): JSX.Element {
+// function RenderTrains(): JSX.Element {
+
+function RenderTrains(props: Props): JSX.Element {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasWorked, setHasWorked] = useState(false);
