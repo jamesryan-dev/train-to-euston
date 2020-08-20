@@ -1,5 +1,40 @@
 import styled from 'styled-components'
 
+export const TrainSingleComp = styled.div`
+  margin-bottom: 2rem;
+  background-color: #3a7b75;
+  border-radius: 6px;
+  color: white;
+  padding: 10px 6px;
+  box-shadow: 0 5px 10px rgba(11,31,29, 0.19), 0 3px 3px rgba(11,31,29, 0.23);
+  .additionalStops {
+    display:  ${(props) => props.showAdditionalStops ? 'flex' : 'none'};
+    flex-direction: column;
+  }
+  .timeDesination {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 60%;
+    /* flex: 1; */
+    .arrival {
+      font-size: 1.6rem;
+      padding-bottom: 4px;
+    }
+    .destination {
+      opacity: 0.7;
+    }
+  }
+  .timeStatus {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+`
+
+
 export const Status = styled.div`
     padding: 5px 8px;
     border-radius: 20px;
@@ -50,36 +85,6 @@ const NoReport = () => {
     color: #3b7afc;
   `
 }
-
-export const TrainSingleComp = styled.div`
-  margin-bottom: 2rem;
-  background-color: #3a7b75;
-  border-radius: 6px;
-  color: white;
-  padding: 10px 6px;
-  box-shadow: 0 5px 10px rgba(11,31,29, 0.19), 0 3px 3px rgba(11,31,29, 0.23);
-  .timeDesination {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 60%;
-    /* flex: 1; */
-    .arrival {
-      font-size: 1.6rem;
-      padding-bottom: 4px;
-    }
-    .destination {
-      opacity: 0.7;
-    }
-  }
-  .timeStatus {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-`
 
 export const InfoContainer = styled.div`
   display: flex;

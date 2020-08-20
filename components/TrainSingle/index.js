@@ -30,7 +30,7 @@ const TrainSingle = (props) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasWorked, setHasWorked] = useState(false);
   const [hasError, setHasError] = useState(false)
-  const {expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name} = props
+  const {expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name, showAdditionalStops} = props
   const renderStatus = (status) => {
     if (status == 'ON TIME') {
       return (
@@ -55,14 +55,14 @@ const TrainSingle = (props) => {
     }
   }
 
-  const renderEustonArrival = (result) => {
-    console.log('result in renderEustonArrival', result)
-    return (
-      <div>
-        lol
-      </div>
-    )
-  }
+  // const renderEustonArrival = (result) => {
+  //   console.log('result in renderEustonArrival', result)
+  //   return (
+  //     <div>
+  //       lol
+  //     </div>
+  //   )
+  // }
 
   useEffect(() => {
       fetch(service_timetable.id)
@@ -144,7 +144,7 @@ const TrainSingle = (props) => {
   }
 // {renderAllStationsOnJourney(timetable)}
   return (
-    <TrainSingleComp >
+    <TrainSingleComp showAdditionalStops={false}>
       <div className='timeStatus'>
         <div className='timeDesination'>
           <InfoContainerComp firstStop name='Berkhamsted' arrival={expectedArrival} platformNumber={null} operatorName={operator_name} />
