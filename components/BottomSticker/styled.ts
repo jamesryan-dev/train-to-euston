@@ -14,8 +14,11 @@ export const StickerComp = styled.div`
   left: 50%;
   height: 30vh;
   height: ${(props) => props.show ? '90vh' : '30vh'};
+  height: ${(props) => props.show ? '90vh' : '6vh'};
   box-shadow: ${(props) => props.show ? '0 7px 13px rgba(11,31,29, 0.19), 0 4px 5px rgba(11,31,29, 0.23)' : null};
   transform: ${(props) => props.show ? 'translateY(0%) translateX(-50%)' : 'translateY(80%) translateX(-50%)'};
+  transform: ${(props) => props.show ? 'translateY(0%) translateX(-50%)' : 'translateY(0%) translateX(-50%)'};
+
   width: 90%;
   background: #004c45;
   background: #0d4a48;
@@ -27,6 +30,9 @@ export const StickerComp = styled.div`
   border-bottom-left-radius: 0;
   transition: all 1s;
   z-index: 5;
+  @media only screen and (min-width: 900px) {
+    width: auto;
+  }
   .bottom-header {
     display: flex;
     justify-content: ${(props) => props.show ? 'center' : 'space-between'} ;
