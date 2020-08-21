@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TrainSingle from '../TrainSingle'
+import APILimitMaxed from '../APILimitMaxed'
 import { Center } from '../styled/styled'
 import {TrainsList} from './styled'
 
@@ -21,12 +22,21 @@ function RenderTrains() {
         .then(res => res.json())
         .then(
           (result) => {
-            setIsLoaded(true);
-            setItems(result.departures);
-            setHasWorked(true);
-            setTimeout(() => setSuccessfulFunction(true), 67)
-            // setTimetables(fetch(result.departures.service_timetable))
-            console.log('isLoaded:', isLoaded, 'hasWorked, ', hasWorked, ' result.departures:', result.departures )
+            console.log('result>>', result)
+            const errorMessage = "Authorisation failed for app_key 3d40a87351cfa3eebd978e20372e44e6 and app_id ceabf0ac with error 'usage limits are exceeded'. See http://transportapi.com for plans and sign-up."
+            if (result.error == errorMessage) {
+              console.log('error handled')
+              setIsLoaded(true);
+              setHasWorked(false);
+            } else if (result != undefined) {
+              setIsLoaded(true);
+              setItems(result.departures);
+              setHasWorked(true);
+              setTimeout(() => setSuccessfulFunction(true), 67)
+              // setTimetables(fetch(result.departures.service_timetable))
+              console.log('isLoaded:', isLoaded, 'hasWorked, ', hasWorked, ' result.departures:', result.departures )
+
+            }
           },
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
@@ -51,20 +61,24 @@ function RenderTrains() {
     //     </Center>
     //   )
     // }
-    if (items == undefined) {
-      return (
-        <Center noTrains>
-          <h1>Error: {error.message}</h1>
-        </Center>
-      )
-    }
+    // if (items == undefined) {
+    //   console.log('items is undefined:', items)
+    //   return
+    //   return (
+    //     <Center noTrains>
+    //       <h1>Error: {error.message}</h1>
+    //     </Center>
+    //   )
+    // }
     if (error) {
-      return (
-        <Center noTrains>
-          <h1>Error: {error.message}</h1>
-        </Center>
-      )
+      return
+      // return (
+      //   <Center noTrains>
+      //     <h1>Error: {error.message}</h1>
+      //   </Center>
+      // )
   } else if (!isLoaded) {
+    console.log('!isLoaded', isLoaded)
     return (
       <Center noTrains loader>
         <h1>Loading...</h1>
@@ -72,6 +86,7 @@ function RenderTrains() {
       </Center>
     )
   } else if (isLoaded && hasWorked) {
+    console.log('isLoaded && hasWorked', isLoaded, hasWorked)
       // console.log('items wasnt undefined', items)
       // console.log('items.all', items.all)
       let itemsAll = items.all
@@ -139,7 +154,12 @@ function RenderTrains() {
         </TrainsList>
         </>
       );
-    } else {
+    } else if (isLoaded && !hasWorked) {
+      return (
+          <APILimitMaxed />
+      )
+    }
+    else {
       return (
         <h1>no data loaded</h1>
       )

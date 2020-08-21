@@ -68,6 +68,8 @@ const GlobalStyles = createGlobalStyle`
 
   .container {
     padding: 0 5%;
+    z-index: 1;
+    position: relative;
   }
 
   h1, h2, h3 {

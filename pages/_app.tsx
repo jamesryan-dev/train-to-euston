@@ -3,7 +3,7 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import Head from 'next/head'
 import Header from '../components/Header'
-
+import BottomSticker from '../components/BottomSticker'
 import theme from "../theme";
 import GlobalStyles from "../GlobalStyles";
 
@@ -18,6 +18,7 @@ export default class MyApp extends App {
         </Head>
         <Header title="Berkhamsted to Euston" />
         <Component {...pageProps} key={router.route} />
+        <BottomSticker />
       </ThemeProvider>
     );
   }
