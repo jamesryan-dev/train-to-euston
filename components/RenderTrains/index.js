@@ -119,7 +119,7 @@ function RenderTrains() {
           )
         }
         )}
-        <Center>
+        <Center showMore className='show-more-container'>
           <h3 className='show-more' onClick={showAll}>Show more</h3>
         </Center>
         {restOfResults.map((item, i) => {

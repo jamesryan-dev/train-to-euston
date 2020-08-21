@@ -7,6 +7,10 @@ export const TrainSingleComp = styled.div`
 export const TrainsList = styled.div`
   ${({ successful }) => (successful ? createCSS() : null)};
   ${( {showAll}) => (showAll ? showRest() : null)};
+  .show-more-container {
+    padding: ${(props) => props.showAll ? '0' : null};
+    transition: all 1s ease;
+  }
   .show-more {
     opacity: ${(props) => props.successful ? '1' : '0'};
     transform: ${(props) => props.successful ? '0' : '-5px'};
@@ -34,7 +38,7 @@ function createCSS() {
 function showRest() {
   let styles = '';
 
-  for (let i = 3; i < 20; i += 1) {
+  for (let i = 4; i < 20; i += 1) {
      styles += `
        .SingleTrain-${i} {
          opacity: 1;
