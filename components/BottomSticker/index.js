@@ -36,6 +36,7 @@ function BottomSticker () {
           <h3>I'm a Web Developer and Designer with half a decade's experience currently available for hire - please visit <a href="https://namesjam.es">https://namesjam.es</a> to get in contact :)</h3>
           <h3>Have a good day,</h3>
           <h3>James</h3>
+          <a href="https://www.paypal.com/paypalme/jimmynames" className='button button-small'>Support costs</a>
         </Content>
       </StickerComp>
     </BottomStickerComp>

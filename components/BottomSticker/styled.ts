@@ -97,4 +97,12 @@ export const Content = styled.div`
   // transform: ${(props) => props.show ? 'translateY(0)' : 'translateY(5px)'};
   transition: all 1s;
   // transition-delay: 0.1s;
+  .button {
+    margin-top: 1.2rem;
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    padding-bottom: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 100;
+  }
 `
