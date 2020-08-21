@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {BottomStickerComp, StickerComp} from './styled'
+import ChevronSVGComp from './ChevronSVG.js'
 
 function BottomSticker () {
   const [showBottomSticker, setShowBottomSticker] = useState(false);
@@ -15,9 +16,12 @@ function BottomSticker () {
     <BottomStickerComp>
       <StickerComp onClick={handleShowBottomSticker} show={showBottomSticker}>
         <div className='bottom-header'>
-          <h3>Made by <span>namesjame.es</span></h3>
-          <div>chevron</div>
+
           <h3>Add to homepage</h3>
+          <div className='chevron'>
+            <ChevronSVGComp />
+          </div>
+          <h3>Made by <span>namesjame.es</span></h3>
         </div>
       </StickerComp>
     </BottomStickerComp>

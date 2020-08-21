@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const BottomStickerComp = styled.div`
-  /* background: blue; */
   height: 100vh;
   width: 100%;
   position: fixed;
@@ -20,19 +19,44 @@ export const StickerComp = styled.div`
   width: 90%;
   background: #004c45;
   background: #0d4a48;
-  background: ${(props) => props.show ? 'blue' : 'red'};
+  /* background: ${(props) => props.show ? 'blue' : 'red'}; */
   padding: 0.4rem 0.6rem;
   padding-top: 1rem;
   border-radius: 10px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
   transition: all 1s;
-
   z-index: 5;
   .bottom-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: ${(props) => props.show ? 'center' : 'space-between'} ;
     align-items: center;
+    position: relative;
+    h3 {
+      &:first-child,
+      &:last-child {
+        display: ${(props) => props.show ? 'none' : 'block'};
+      }
+    }
+    .chevron {
+      left: 50%;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transform: ${(props) => props.show ? 'rotateX(-180deg) translate(-50%, -50%)' : 'rotateX(0deg) translate(-50%, -50%)'};
+      transition: all 1s ease;
+      svg {
+        /* backface-visibility: hidden; */
+        fill: white;
+        path {
+          fill: white;
+        }
+      }
+    }
+  }
+  .content {
+
   }
   h3 {
     span {
