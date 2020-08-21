@@ -77,6 +77,17 @@ const GlobalStyles = createGlobalStyle`
     color: white;
   }
 
+  .button {
+    border: 2px solid white;
+    padding: 1rem 0.8rem;
+    color: white;
+    font-size: 1.6rem;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    text-weight: 200;
+  }
+
 
 `;
 
