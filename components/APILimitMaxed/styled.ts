@@ -78,6 +78,12 @@ export const APILimitMaxedComp = styled.div`
           margin: 0 auto;
         }
       }
+      .copy {
+        width: 76.666%;
+      }
+      .small-p {
+        width: 56.6%;
+      }
     }
   }
 `

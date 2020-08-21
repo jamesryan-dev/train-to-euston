@@ -18,7 +18,7 @@ function APILimitMaxed () {
           <BoxSVGComp />
           <a href="https://www.paypal.com/paypalme/jimmynames" className='button'>Support us</a>
         </div>
-        <SmallP>Alternatively, the first 500 users/visits will always be able to use this app each and every day until we raise enough to fund all-day access :)</SmallP>
+        <SmallP className='small-p'>Alternatively, the first 500 users/visits will always be able to use this app each and every day until we raise enough to fund all-day access :)</SmallP>
       </div>
     </APILimitMaxedComp>
   )

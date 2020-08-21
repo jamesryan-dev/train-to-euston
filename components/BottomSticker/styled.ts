@@ -15,7 +15,8 @@ export const StickerComp = styled.div`
   left: 50%;
   height: 30vh;
   height: ${(props) => props.show ? '90vh' : '30vh'};
-  height: ${(props) => props.show ? '90vh' : '6vh'};
+  height: ${(props) => props.show ? '90%' : '6vh'};
+  min-height: 38px;
   box-shadow: ${(props) => props.show ? '0 7px 13px rgba(11,31,29, 0.19), 0 4px 5px rgba(11,31,29, 0.23)' : null};
   transform: ${(props) => props.show ? 'translateY(0%) translateX(-50%)' : 'translateY(80%) translateX(-50%)'};
   transform: ${(props) => props.show ? 'translateY(0%) translateX(-50%)' : 'translateY(0%) translateX(-50%)'};
@@ -83,6 +84,10 @@ export const StickerComp = styled.div`
     span {
       text-decoration: underline;
     }
+  }
+
+  @media only screen and (max-width: 414px) {
+    /* height: ${(props) => props.show ? '90vh' : '6vh'}; */
   }
 `
 
