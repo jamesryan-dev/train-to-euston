@@ -117,7 +117,7 @@ function TimeUntil() {
             setItems(result.departures);
             setHasWorked(true);
             setTimetables(fetch(result.departures.service_timetable))
-            setTimeout(() => setSuccessfulFunction(true), 367) 
+            setTimeout(() => setSuccessfulFunction(true), 767) 
           },
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow

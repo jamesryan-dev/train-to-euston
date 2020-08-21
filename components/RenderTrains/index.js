@@ -13,6 +13,7 @@ function RenderTrains() {
   const [hasWorked, setHasWorked] = useState(false);
   const [hasError, setHasError] = useState(false)
   const [items, setItems] = useState([]);
+  const [showRestOfTrains, setShowRestOfTrains] = useState(false);
 
 
   useEffect(() => {
@@ -87,6 +88,12 @@ function RenderTrains() {
      const firstThree = result.slice(0, 3)
      const restOfResults = result.slice(3, 20)
 
+     const showAll = () => {
+       console.log('show all>>>>>>>>>')
+       setShowRestOfTrains(true)
+     }
+
+
 
      if (result === undefined || result.length == 0) {
        return (
@@ -97,7 +104,7 @@ function RenderTrains() {
       console.log('result:', result);
       return (
         <>
-        <TrainsList successful={successfulFunction}>
+        <TrainsList successful={successfulFunction} showAll={showRestOfTrains}>
         {firstThree.map((item, i) => {
           return (
             <TrainSingle
@@ -113,7 +120,7 @@ function RenderTrains() {
         }
         )}
         <Center>
-          <h3>Show more</h3>
+          <h3 className='show-more' onClick={showAll}>Show more</h3>
         </Center>
         {restOfResults.map((item, i) => {
           return (

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const TrainSingleComp = styled.div`
   opacity: 0;
-  transform: translateY(-5px);
+  transform: translateY(2px);
   &.open {
     box-shadow: 0 7px 13px rgba(11,31,29, 0.19), 0 4px 5px rgba(11,31,29, 0.23);
     .timeStatus {
