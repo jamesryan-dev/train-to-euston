@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const BottomStickerComp = styled.div`
   height: 100vh;
+  height: 100%;
   width: 100%;
   position: fixed;
   top: 0;
@@ -24,6 +25,7 @@ export const StickerComp = styled.div`
   background: #0d4a48;
   /* background: ${(props) => props.show ? 'blue' : 'red'}; */
   padding: 0.4rem 0.6rem;
+  padding: 1.6rem;
   padding-top: 1rem;
   border-radius: 10px;
   border-bottom-right-radius: 0;
