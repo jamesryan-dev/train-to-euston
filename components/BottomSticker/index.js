@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {BottomStickerComp, StickerComp, Content} from './styled'
-import ChevronSVGComp from './ChevronSVG.js'
+import ChevronSVGComp from './ChevronSvg.js'
+
 
 function BottomSticker () {
   const [showBottomSticker, setShowBottomSticker] = useState(false);
