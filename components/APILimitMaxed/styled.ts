@@ -4,6 +4,7 @@ export const APILimitMaxedComp = styled.div`
   box-shadow: 0 7px 13px rgba(11,31,29, 0.19), 0 4px 5px rgba(11,31,29, 0.23);
   background: #004c45;
   height: 75vh;
+  height: auto;
   width: 90%;
   position: absolute;
   top: 0%;
@@ -62,6 +63,20 @@ export const APILimitMaxedComp = styled.div`
     .wrapper {
       .copy, .donation {
         width: 100%;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 900px) {
+    width: auto;
+    .wrapper {
+      .copy, .donation {
+        width: 100%;
+        .button {
+          max-width: 200px;
+          align-self: center;
+          margin: 0 auto;
+        }
       }
     }
   }
