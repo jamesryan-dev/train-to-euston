@@ -77,3 +77,10 @@ export const StickerComp = styled.div`
     }
   }
 `
+
+export const Content = styled.div`
+  opacity: ${(props) => props.show ? '1' : '0'};
+  transform: ${(props) => props.show ? 'translateY(0)' : 'translateY(5px)'};
+  transition: all 1s;
+  transition-delay: 0.1s;
+`

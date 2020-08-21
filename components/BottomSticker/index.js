@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {BottomStickerComp, StickerComp} from './styled'
+import {BottomStickerComp, StickerComp, Content} from './styled'
 import ChevronSVGComp from './ChevronSVG.js'
 
 function BottomSticker () {
@@ -24,7 +24,7 @@ function BottomSticker () {
           <h3>Made by <span>namesjame.es</span></h3>
         </div>
 
-        <div className='content'>
+        <Content className='content' show={showBottomSticker}>
           <h3 className='title'>Add to homepage</h3>
 
           <hr />
@@ -35,7 +35,7 @@ function BottomSticker () {
           <h3>I'm a Web Developer and Designer with half a decade's experience currently available for hire - please visit <a href="https://namesjam.es">https://namesjam.es</a> to get in contact :)</h3>
           <h3>Have a good day,</h3>
           <h3>James</h3>
-        </div>
+        </Content>
       </StickerComp>
     </BottomStickerComp>
   )
