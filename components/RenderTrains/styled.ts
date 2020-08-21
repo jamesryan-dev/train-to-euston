@@ -11,7 +11,7 @@ export const TrainsList = styled.div`
 function createCSS() {
   let styles = '';
 
-  for (let i = 0; i < 20; i += 1) {
+  for (let i = 0; i < 3; i += 1) {
      styles += `
        .SingleTrain-${i} {
          opacity: 1;

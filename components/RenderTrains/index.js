@@ -84,6 +84,10 @@ function RenderTrains() {
        return result.origin_name === "Milton Keynes Central" || result.origin_name === "Northampton" || result.origin_name === "Tring" || result.origin_name === 'Birmingham New Street';
      });
 
+     const firstThree = result.slice(0, 3)
+     const restOfResults = result.slice(3, 20)
+
+
      if (result === undefined || result.length == 0) {
        return (
            <h3>No rest for the wicked</h3>
@@ -94,10 +98,27 @@ function RenderTrains() {
       return (
         <>
         <TrainsList successful={successfulFunction}>
-        {result.map((item, i) => {
+        {firstThree.map((item, i) => {
           return (
             <TrainSingle
               i={i}
+              key={item.train_uid}
+              expectedArrival={item.expected_arrival_time}
+              status={item.status}
+              destination={item.destination_name}
+              operator_name={item.operator_name}
+              service_timetable={item.service_timetable}
+             />
+          )
+        }
+        )}
+        <Center>
+          <h3>Show more</h3>
+        </Center>
+        {restOfResults.map((item, i) => {
+          return (
+            <TrainSingle
+              i={i+1*4}
               key={item.train_uid}
               expectedArrival={item.expected_arrival_time}
               status={item.status}
