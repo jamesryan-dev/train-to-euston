@@ -69,6 +69,13 @@ const GlobalStyles = createGlobalStyle`
   .container {
     padding: 0 5%;
   }
+
+  h1, h2, h3 {
+    font-weight: 100;
+    color: white;
+  }
+
+
 `;
 
 export default GlobalStyles;

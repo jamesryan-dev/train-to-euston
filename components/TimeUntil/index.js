@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {TimeUntilComp} from './styled'
+import {FadeUp} from '../styled/styled'
 
 // interface Props {
 //   expectedArrival?: string;
@@ -45,6 +46,11 @@ const workOutTime = (data, i) => {
   // const currentTime = []
   // const currentTimeArray = currentTime.push(h, m)
   // console.log('currentTimeArray', currentTimeArray)
+  if (first === undefined || first.length == 0) {
+    return (
+      <TimeUntilComp><h2>There's no more trains unfortunately.. </h2></TimeUntilComp>
+    )
+  }
   let timeUntilTrain
   if (arrivalH != h) {
     const minutesUntilHourChange = 60 - m
@@ -53,6 +59,7 @@ const workOutTime = (data, i) => {
     timeUntilTrain = totalTimeUntilTrain
     // console.log('timeUntilTrain in func:', timeUntilTrain)
     // setTimeUntilArrival(timeUntilTrain)
+
     return (
     <TimeUntilComp><h2>{`${timeUntilTrain} minutes until the next train to London Euston`}</h2></TimeUntilComp>
     );
@@ -89,6 +96,7 @@ const workOutTime = (data, i) => {
 
 
 function TimeUntil() {
+  const [successfulFunction, setSuccessfulFunction] = useState(false)
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasWorked, setHasWorked] = useState(false);
@@ -109,6 +117,7 @@ function TimeUntil() {
             setItems(result.departures);
             setHasWorked(true);
             setTimetables(fetch(result.departures.service_timetable))
+            setTimeout(() => setSuccessfulFunction(true), 1000) 
           },
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
@@ -128,10 +137,15 @@ function TimeUntil() {
     if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-    return <div>Loading...</div>;
+    return <div></div>;
   } else if (isLoaded && hasWorked) {
       let time
-      return workOutTime(items.all, 0)
+      return (
+        <FadeUp successful={successfulFunction}>
+        {workOutTime(items.all, 0)}
+        </FadeUp>
+      )
+
     } else {
       return (
         <h1>no data loaded</h1>

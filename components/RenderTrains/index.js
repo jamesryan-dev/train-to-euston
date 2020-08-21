@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import TrainSingle from '../TrainSingle'
+import { Center } from '../styled/styled'
 // function RenderTrains(): JSX.Element {
+import Loader from '../Loader'
 
 function RenderTrains() {
   const [error, setError] = useState(null);
@@ -36,13 +38,33 @@ function RenderTrains() {
         //   console.log('data', data)
         // })
     }, [])
+    // if (items === undefined || items.length == 0) {
+    //   return (
+    //     <Center noTrains>
+    //       <h1>No more trains today</h1>
+    //     </Center>
+    //   )
+    // }
     if (items == undefined) {
-      return <div>Error: {error.message}</div>
+      return (
+        <Center noTrains>
+          <h1>Error: {error.message}</h1>
+        </Center>
+      )
     }
     if (error) {
-    return <div>Error: {error.message}</div>;
+      return (
+        <Center noTrains>
+          <h1>Error: {error.message}</h1>
+        </Center>
+      )
   } else if (!isLoaded) {
-    return <div>Loading...</div>;
+    return (
+      <Center noTrains loader>
+        <h1>Loading...</h1>
+        <Loader />
+      </Center>
+    )
   } else if (isLoaded && hasWorked) {
       // console.log('items wasnt undefined', items)
       // console.log('items.all', items.all)
@@ -57,8 +79,15 @@ function RenderTrains() {
        return result.origin_name === "Milton Keynes Central" || result.origin_name === "Northampton" || result.origin_name === "Tring" || result.origin_name === 'Birmingham New Street';
      });
 
+     if (result === undefined || result.length == 0) {
+       return (
+           <h3>No rest for the wicked</h3>
+       )
+     }
+
       console.log('result:', result);
       return (
+        <>
         <ul>
         {result.map(item => {
           return (
@@ -74,6 +103,7 @@ function RenderTrains() {
         }
         )}
         </ul>
+        </>
       );
     } else {
       return (
