@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import TrainSingle from '../TrainSingle'
 import { Center } from '../styled/styled'
+import {TrainsList} from './styled'
+
 // function RenderTrains(): JSX.Element {
 import Loader from '../Loader'
 
 function RenderTrains() {
+  const [successfulFunction, setSuccessfulFunction] = useState(false)
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasWorked, setHasWorked] = useState(false);
   const [hasError, setHasError] = useState(false)
   const [items, setItems] = useState([]);
+  const [showRestOfTrains, setShowRestOfTrains] = useState(false);
+
 
   useEffect(() => {
       fetch("https://transportapi.com/v3/uk/train/station/BKM/live.json?query&app_id=ceabf0ac&app_key=3d40a87351cfa3eebd978e20372e44e6")
@@ -19,6 +24,7 @@ function RenderTrains() {
             setIsLoaded(true);
             setItems(result.departures);
             setHasWorked(true);
+            setTimeout(() => setSuccessfulFunction(true), 67)
             // setTimetables(fetch(result.departures.service_timetable))
             console.log('isLoaded:', isLoaded, 'hasWorked, ', hasWorked, ' result.departures:', result.departures )
           },
@@ -79,6 +85,16 @@ function RenderTrains() {
        return result.origin_name === "Milton Keynes Central" || result.origin_name === "Northampton" || result.origin_name === "Tring" || result.origin_name === 'Birmingham New Street';
      });
 
+     const firstThree = result.slice(0, 3)
+     const restOfResults = result.slice(3, 20)
+
+     const showAll = () => {
+       console.log('show all>>>>>>>>>')
+       setShowRestOfTrains(true)
+     }
+
+
+
      if (result === undefined || result.length == 0) {
        return (
            <h3>No rest for the wicked</h3>
@@ -88,10 +104,11 @@ function RenderTrains() {
       console.log('result:', result);
       return (
         <>
-        <ul>
-        {result.map(item => {
+        <TrainsList successful={successfulFunction} showAll={showRestOfTrains}>
+        {firstThree.map((item, i) => {
           return (
             <TrainSingle
+              i={i}
               key={item.train_uid}
               expectedArrival={item.expected_arrival_time}
               status={item.status}
@@ -102,7 +119,24 @@ function RenderTrains() {
           )
         }
         )}
-        </ul>
+        <Center>
+          <h3 className='show-more' onClick={showAll}>Show more</h3>
+        </Center>
+        {restOfResults.map((item, i) => {
+          return (
+            <TrainSingle
+              i={i+1*4}
+              key={item.train_uid}
+              expectedArrival={item.expected_arrival_time}
+              status={item.status}
+              destination={item.destination_name}
+              operator_name={item.operator_name}
+              service_timetable={item.service_timetable}
+             />
+          )
+        }
+        )}
+        </TrainsList>
         </>
       );
     } else {
