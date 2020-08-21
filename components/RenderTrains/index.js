@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import TrainSingle from '../TrainSingle'
 import { Center } from '../styled/styled'
+import {TrainsList} from './styled'
+
 // function RenderTrains(): JSX.Element {
 import Loader from '../Loader'
 
 function RenderTrains() {
+  const [successfulFunction, setSuccessfulFunction] = useState(false)
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasWorked, setHasWorked] = useState(false);
   const [hasError, setHasError] = useState(false)
   const [items, setItems] = useState([]);
+
 
   useEffect(() => {
       fetch("https://transportapi.com/v3/uk/train/station/BKM/live.json?query&app_id=ceabf0ac&app_key=3d40a87351cfa3eebd978e20372e44e6")
@@ -19,6 +23,7 @@ function RenderTrains() {
             setIsLoaded(true);
             setItems(result.departures);
             setHasWorked(true);
+            setTimeout(() => setSuccessfulFunction(true), 67)
             // setTimetables(fetch(result.departures.service_timetable))
             console.log('isLoaded:', isLoaded, 'hasWorked, ', hasWorked, ' result.departures:', result.departures )
           },
@@ -88,10 +93,11 @@ function RenderTrains() {
       console.log('result:', result);
       return (
         <>
-        <ul>
-        {result.map(item => {
+        <TrainsList successful={successfulFunction}>
+        {result.map((item, i) => {
           return (
             <TrainSingle
+              i={i}
               key={item.train_uid}
               expectedArrival={item.expected_arrival_time}
               status={item.status}
@@ -102,7 +108,7 @@ function RenderTrains() {
           )
         }
         )}
-        </ul>
+        </TrainsList>
         </>
       );
     } else {

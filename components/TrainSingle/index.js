@@ -32,7 +32,7 @@ const TrainSingle = (props) => {
   const [hasError, setHasError] = useState(false);
   const [showAdditonalStopsState, setShowAdditonalStopsState] = useState(false);
 
-  const {expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name, showAdditionalStops} = props
+  const {expectedArrival, status, destination, onTime, early, late, noReport, service_timetable, operator_name, showAdditionalStops, i} = props
   const renderStatus = (status) => {
     if (status == 'ON TIME') {
       return (
@@ -155,7 +155,7 @@ const TrainSingle = (props) => {
   }
 // {renderAllStationsOnJourney(timetable)}this.state.value ? "badge-primary " : "badge-danger ")
   return (
-    <TrainSingleComp className={showAdditonalStopsState ? " open" : "closed" } showAdditionalStops={showAdditonalStopsState} onClick={handleShowAdditionalStops}>
+    <TrainSingleComp className={showAdditonalStopsState ? ` open SingleTrain SingleTrain-${i}` : `closed SingleTrain SingleTrain-${i}` } showAdditionalStops={showAdditonalStopsState} onClick={handleShowAdditionalStops}>
       <div className='timeStatus'>
         <div className='timeDesination'>
           <div className='eustonAdditional'>
