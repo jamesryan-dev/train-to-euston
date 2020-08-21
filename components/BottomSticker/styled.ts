@@ -56,7 +56,20 @@ export const StickerComp = styled.div`
     }
   }
   .content {
+    hr {
+      opacity: 0.5;
+      margin: 1.6rem;
+    }
+    h3 {
+      margin-bottom: 1.2rem;
+    }
+    .title {
+      margin-bottom: 3rem;
+    }
 
+    a {
+      color: white;
+    }
   }
   h3 {
     span {
