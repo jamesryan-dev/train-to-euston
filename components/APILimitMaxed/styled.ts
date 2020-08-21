@@ -3,12 +3,12 @@ import styled from 'styled-components'
 export const APILimitMaxedComp = styled.div`
   box-shadow: 0 7px 13px rgba(11,31,29, 0.19), 0 4px 5px rgba(11,31,29, 0.23);
   background: #004c45;
-  height: 69vh;
+  height: 75vh;
   width: 90%;
   position: absolute;
   top: 0%;
   left: 50%;
-  transform: translateY(10%) translateX(-50%);
+  transform: translateY(5%) translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,6 +22,10 @@ export const APILimitMaxedComp = styled.div`
     flex-direction: column;
     h1 {
       margin-bottom: 1.2rem;
+    }
+    p {
+      color: white;
+      margin-top: 1.2rem;
     }
     .copy {
       width: 50%;

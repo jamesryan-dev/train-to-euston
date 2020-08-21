@@ -1,5 +1,6 @@
 import {APILimitMaxedComp} from './styled'
 import BoxSVGComp from './BoxSvg.js'
+import {SmallP} from '../TrainSingle/styled'
 
 function APILimitMaxed () {
   return (
@@ -17,6 +18,7 @@ function APILimitMaxed () {
           <BoxSVGComp />
           <a href="https://www.paypal.com/paypalme/jimmynames" className='button'>Support us</a>
         </div>
+        <SmallP>Alternatively, the first 1000 users will be able to use this each and every day until we raise enough to fund all-day access</SmallP>
       </div>
     </APILimitMaxedComp>
   )
