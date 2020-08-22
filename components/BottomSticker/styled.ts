@@ -21,7 +21,7 @@ export const StickerComp = styled.div`
   box-shadow: ${(props) => props.show ? '0 7px 13px rgba(11,31,29, 0.19), 0 4px 5px rgba(11,31,29, 0.23)' : null};
   transform: ${(props) => props.show ? 'translateY(0%) translateX(-50%)' : 'translateY(80%) translateX(-50%)'};
   transform: ${(props) => props.show ? 'translateY(0%) translateX(-50%)' : 'translateY(0%) translateX(-50%)'};
-
+  overflow-y: scroll;
   width: 90%;
   background: #004c45;
   /* background: #0d4a48; */
@@ -84,6 +84,17 @@ export const StickerComp = styled.div`
   h3 {
     span {
       text-decoration: underline;
+    }
+  }
+
+  .images {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    img {
+      border-radius: 5px;
+      border: 1px solid white;
+      margin-bottom: 1.2rem;
     }
   }
 

@@ -14,7 +14,7 @@ function BottomSticker () {
     }
   }
   return (
-  
+
       <StickerComp onClick={handleShowBottomSticker} show={showBottomSticker}>
         <div className='bottom-header'>
 
@@ -27,7 +27,11 @@ function BottomSticker () {
 
         <Content className='content' show={showBottomSticker}>
           <h3 className='title'>Add to homepage</h3>
-
+          <div className='images'>
+            <img src='/1.png' srcSet='/1.png 1x, /1@2x.png 2x' />
+            <img src='/2.png' srcSet='/2.png 1x, /2@2x.png 2x' />
+            <img src='/3.png' srcSet='/3.png 1x, /3@2x.png 2x' />
+          </div>
           <hr />
 
           <h3 className='title'>Made by <a href="https://namesjam.es">namesjam.es</a></h3>
