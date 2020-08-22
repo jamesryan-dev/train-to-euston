@@ -6,11 +6,12 @@ export const BottomStickerComp = styled.div`
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: ${(props) => props.show ? '0' : '2'};
+  z-index: ${(props) => props.show ? '2' : '0'};
+  background: ${(props) => props.show ? 'blue' : 'red'};
 `
 
 export const StickerComp = styled.div`
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 50%;
   height: 30vh;
@@ -23,7 +24,7 @@ export const StickerComp = styled.div`
 
   width: 90%;
   background: #004c45;
-  background: #0d4a48;
+  /* background: #0d4a48; */
   /* background: ${(props) => props.show ? 'blue' : 'red'}; */
   padding: 0.4rem 0.6rem;
   padding: 1.6rem;

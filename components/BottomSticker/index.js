@@ -14,7 +14,7 @@ function BottomSticker () {
     }
   }
   return (
-    <BottomStickerComp>
+  
       <StickerComp onClick={handleShowBottomSticker} show={showBottomSticker}>
         <div className='bottom-header'>
 
@@ -39,7 +39,7 @@ function BottomSticker () {
           <a href="https://www.paypal.com/paypalme/jimmynames" className='button button-small'>Support costs</a>
         </Content>
       </StickerComp>
-    </BottomStickerComp>
+
   )
 }
 
