@@ -17,6 +17,11 @@ export const TrainsList = styled.div`
     transition: all 1s ease;
     display: ${(props) => props.showAll ? 'none' : 'block'};
   }
+  .SingleTrain {
+    &:last-of-type {
+      margin-bottom: 7rem;
+    }
+  }
 `
 
 function createCSS() {
