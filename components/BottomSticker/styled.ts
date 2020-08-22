@@ -93,7 +93,7 @@ export const StickerComp = styled.div`
     flex-direction: column;
     img {
       border-radius: 5px;
-      border: 1px solid white;
+      border: 1px solid #004c45;
       margin-bottom: 1.2rem;
     }
   }
