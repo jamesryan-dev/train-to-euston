@@ -68,11 +68,24 @@ const GlobalStyles = createGlobalStyle`
 
   .container {
     padding: 0 5%;
+    z-index: 1;
+    position: relative;
   }
 
   h1, h2, h3 {
     font-weight: 100;
     color: white;
+  }
+
+  .button {
+    border: 2px solid white;
+    padding: 1rem 0.8rem;
+    color: white;
+    font-size: 1.6rem;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    text-weight: 200;
   }
 
 

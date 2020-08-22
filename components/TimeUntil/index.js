@@ -112,12 +112,15 @@ function TimeUntil() {
         .then(res => res.json())
         .then(
           (result) => {
-            console.log('result.departures.service_timetable:', result.departures.service_timetable, 'isLoaded:', isLoaded, 'hasWorked, ', hasWorked, ' result.departures:', result.departures )
-            setIsLoaded(true);
-            setItems(result.departures);
-            setHasWorked(true);
-            setTimetables(fetch(result.departures.service_timetable))
-            setTimeout(() => setSuccessfulFunction(true), 767) 
+            console.log('result.departures:', result.departures)
+            if (result.departures != undefined) {
+              console.log('result.departures.service_timetable:', result.departures.service_timetable, 'isLoaded:', isLoaded, 'hasWorked, ', hasWorked, ' result.departures:', result.departures )
+              setIsLoaded(true);
+              setItems(result.departures);
+              setHasWorked(true);
+              setTimetables(fetch(result.departures.service_timetable))
+              setTimeout(() => setSuccessfulFunction(true), 767)
+            }
           },
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
@@ -132,10 +135,12 @@ function TimeUntil() {
         //
         //   // (result) => fetch(result.departures.service_timetable)
         // )
+
+        // <div>Error: {error.message}</div>;
     }, [])
     let timeUntilTrain
     if (error) {
-    return <div>Error: {error.message}</div>;
+    return
   } else if (!isLoaded) {
     return <div></div>;
   } else if (isLoaded && hasWorked) {
